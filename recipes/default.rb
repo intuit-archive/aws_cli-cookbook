@@ -17,5 +17,5 @@
 # limitations under the License.
 
 package node['aws_cli']['name'] do
-    version node['aws_cli']['version']
+  version node['aws_cli']['version']
 end
