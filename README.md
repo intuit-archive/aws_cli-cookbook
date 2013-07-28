@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/intuit/aws_cli-cookbook.png)](http://travis-ci.org/intuit/aws_cli-cookbook)
+
 # aws_cli-cookbook cookbook
 Installs AWS command line tools via [AWS CLI Omnibus package](https://github.com/intuit/omnibus-aws_cli)
 
