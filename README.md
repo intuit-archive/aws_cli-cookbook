@@ -15,8 +15,9 @@ Add the aws_cli cookbook to your role/run_list.
 
 # Attributes
 ## default
-node['aws_cli']['name']    - Name of the aws_cli package.
-node['aws_cli']['version'] - Version of aws_cli to install.
+`node['aws_cli']['name']`    - Name of the aws_cli package
+
+`node['aws_cli']['version']` - Version of aws_cli to install
 
 # Recipes
 ## default
