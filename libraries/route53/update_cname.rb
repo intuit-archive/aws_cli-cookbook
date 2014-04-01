@@ -22,7 +22,7 @@ module Route53
       cmd = " --hosted-zone-id #{hosted_zone_id}"
       cmd = " --region #{region}"
       cmd = " --change-batch #{change_batch}"  
-      #'{"Changes": [{"Action": "UPSERT","ResourceRecordSet": {"Name": "courierdb.courier.cap.a.intuit.com","Type": "CNAME","TTL": 60,"ResourceRecords": [{"Value": "ip-10-80-186-184.us-west-2.compute.internal"}]}}]}'
+    
       cmd
     end
   end
