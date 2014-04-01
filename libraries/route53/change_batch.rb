@@ -47,4 +47,3 @@ module Route53
   end
 end
 
-#'{"Changes": [{"Action": "UPSERT","ResourceRecordSet": {"Name": "courierdb.courier.cap.a.intuit.com","Type": "CNAME","TTL": 60,"ResourceRecords": [{"Value": "ip-10-80-186-184.us-west-2.compute.internal"}]}}]}'
