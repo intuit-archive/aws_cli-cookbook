@@ -2,7 +2,6 @@ require "json"
 
 class ChangeBatch
   def initialize(args)
-
     @hostname     = args[:hostname]
     @record       = args[:record]
     @domain       = args[:domain]
