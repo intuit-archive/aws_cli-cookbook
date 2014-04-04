@@ -20,7 +20,7 @@ class ChangeBatch
   def change_type
   	[
       {
-  	    "Actions" =>            @change_type,
+  	    "Action" =>            @change_type,
         "ResourceRecordSet" =>   record_set
       }
     ]
