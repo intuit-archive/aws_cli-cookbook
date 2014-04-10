@@ -23,6 +23,54 @@ Add the aws_cli cookbook to your role/run_list.
 ## default
 Installs AWS CLI rpm.
 
+
+# LWRPs
+## update_cname
+Adds or updates a CNAME entry in the Route53 specified zone.
+
+### Actions:
+- default action: `:update_cname`
+- `:update_cname` adds or updates a CNAME entry for the hostname value in the specified domain and hosted zone id
+
+
+### LWRP attributes:
+#### required
+
+`record`            - Name of the CNAME record to create/update. (:name attribute)
+
+`hostname`          - CNAME Record Hostname Value.
+
+`domain`            - Route53 Hosted Zone Domain Name Value
+
+`hosted_zone_id`    - Route53 Hosted Zone ID
+
+`region`            - AWS region
+
+#### optional
+
+`change_type`       - UPSERT (Default) | CREATE | DELETE
+
+`ttl`               - 60 (Default)
+
+`record_type`       - CNAME (Default) Currently only supports cnames
+
+
+### Example
+```ruby
+
+include_recipe 'aws_cli'
+
+aws_cli_update_cname  "mydb-record" do
+  hostname        "ip-1.2.3.4.us-west-1.compute.internal"
+  domain          "myapp.com"
+  region          "us-west-1"
+  hosted_zone_id  "Z234567"
+end
+
+```
+
+
 # Author
 * Capen Brinkley (@capen)
+* Grant Hoffman (@grantleehoffman)
 
