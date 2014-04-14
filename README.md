@@ -27,14 +27,17 @@ Installs AWS CLI rpm.
 # LWRPs
 ## update_cname
 Adds or updates a CNAME entry in the Route53 specified zone.
+## attach_ebs
+Attach EBS Volume
 
+
+### Route53 CNAME
 ### Actions:
 - default action: `:update_cname`
 - `:update_cname` adds or updates a CNAME entry for the hostname value in the specified domain and hosted zone id
 
 
-### LWRP attributes:
-#### required
+#### required LWRP attributes:
 
 `record`            - Name of the CNAME record to create/update. (:name attribute)
 
@@ -55,7 +58,7 @@ Adds or updates a CNAME entry in the Route53 specified zone.
 `record_type`       - CNAME (Default) Currently only supports cnames
 
 
-### Example
+### Example Add Route53 CNAME Record
 ```ruby
 
 include_recipe 'aws_cli'
@@ -69,6 +72,35 @@ end
 
 ```
 
+### Attach EBS Volume
+### Actions:
+- default action: `:attach_ebs`
+- `:attach_ebs` attach an existing ebs volume to an instance.
+
+#### required LWRP atributes:
+
+`volume_id`         - EBS volume ID (:name attribute)
+
+`instance_id`       - Instance id to attach volume to 
+
+`device`            - device (default "/dev/xvdh")
+
+`region`            - AWS region
+
+
+### Example Attach EBS Volume
+
+```ruby
+
+include_recipe 'aws_cli'
+
+aws_cli_attach_ebs  "vol-123456" do
+  instance_id       "i-1234567"
+  region            "us-west-1"
+  device            "/dev/xvdh"
+end
+
+```
 
 # Author
 * Capen Brinkley (@capen)
