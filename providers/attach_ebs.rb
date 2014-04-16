@@ -1,10 +1,8 @@
 action :attach_ebs do
-  instance_id     = new_resource.instance_id
-  region          = new_resource.region
-  volume_id       = new_resource.volume_id
-  device          = new_resource.device
-
-
+  instance_id   = new_resource.instance_id
+  region        = new_resource.region
+  volume_id     = new_resource.volume_id
+  device        = new_resource.device
 
   cmd = AttachVolume.new.build_command instance_id:     instance_id,
                                        region:          region,
