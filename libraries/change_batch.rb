@@ -18,9 +18,9 @@ class ChangeBatch
 
   private
   def change_type
-  	[
+    [
       {
-  	    "Action" =>            @change_type,
+        "Action" =>            @change_type,
         "ResourceRecordSet" =>   record_set
       }
     ]
@@ -44,5 +44,3 @@ class ChangeBatch
   end
 
 end
-
-
