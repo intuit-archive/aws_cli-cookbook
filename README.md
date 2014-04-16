@@ -83,13 +83,14 @@ end
 
 `instance_id`       - Instance id to attach volume to 
 
-`device`            - device (default "/dev/xvdh")
-
 `region`            - AWS region
+
+#### optional
+
+`device`            -  "/dev/xvdh" (Default)
 
 
 ### Example Attach EBS Volume
-
 ```ruby
 
 include_recipe 'aws_cli'
