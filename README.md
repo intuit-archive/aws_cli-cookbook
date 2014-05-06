@@ -26,13 +26,14 @@ Installs AWS CLI rpm.
 
 # LWRPs
 ## update_cname
-Adds or updates a CNAME entry in the Route53 specified zone.
+Adds or updates a CNAME entry in the Route53 specified zone
 ## attach_ebs
 Attach EBS Volume
-
+## elb_registration
+Attach or detach instance to specified Elastic Load Balancer
 
 ### Route53 CNAME
-### Actions:
+#### Actions:
 - default action:  `:update_cname`
 - `:update_cname`  adds or updates a CNAME entry for the hostname value in the specified domain and hosted zone id
 
@@ -58,7 +59,7 @@ Attach EBS Volume
 `record_type`  - CNAME (Default) Currently only supports cnames
 
 
-### Example Add Route53 CNAME Record
+#### Example Add Route53 CNAME Record
 ```ruby
 
 include_recipe 'aws_cli'
@@ -73,7 +74,7 @@ end
 ```
 
 ### Attach EBS Volume
-### Actions:
+#### Actions:
 - default action:  `:attach_ebs`
 - `:attach_ebs`    attach an existing ebs volume to an instance.
 
@@ -90,7 +91,7 @@ end
 `device`  -  "/dev/xvdh" (Default)
 
 
-### Example Attach EBS Volume
+#### Example Attach EBS Volume
 ```ruby
 
 include_recipe 'aws_cli'
@@ -105,7 +106,7 @@ end
 
 
 ### ELB Instance Registration
-### Actions:
+#### Actions:
 - default action: `:register`
 - `:register`     register an instance to an ELB.
 - `:deregister`   deregister an instance to an ELB.
@@ -118,7 +119,7 @@ end
 
 `region`       - AWS region
 
-### Example register with ELB
+#### Example register instance with ELB
 ```ruby
 
 include_recipe 'aws_cli'
@@ -130,7 +131,7 @@ end
 
 ```
 
-### Example register with ELB
+#### Example deregister instance from ELB
 ```ruby
 
 include_recipe 'aws_cli'
