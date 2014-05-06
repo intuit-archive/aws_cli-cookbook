@@ -8,7 +8,7 @@ action :attach_ebs do
                                        region:          region,
                                        volume_id:       volume_id,
                                        device:          device
-  
+
   execute "Attaching EBS Volume: #{volume_id} to #{instance_id}" do
     command cmd
   end

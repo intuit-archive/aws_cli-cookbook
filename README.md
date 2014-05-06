@@ -82,7 +82,7 @@ end
 
 `volume_id`    - EBS volume ID (:name attribute)
 
-`instance_id`  - Instance id to attach volume to 
+`instance_id`  - Instance id to attach volume to
 
 `region`       - AWS region
 
