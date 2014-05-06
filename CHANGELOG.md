@@ -1,3 +1,6 @@
+## v0.1.4
+* Added elb registration LWRP
+
 ## v0.1.2
 * Added attach_ebs LWRP
 

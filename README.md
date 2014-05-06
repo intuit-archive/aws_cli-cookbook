@@ -15,9 +15,9 @@ Add the aws_cli cookbook to your role/run_list.
 
 # Attributes
 ## default
-`node['aws_cli']['name']`    - Name of the aws_cli package
+`node['aws_cli']['name']`     - Name of the aws_cli package
 
-`node['aws_cli']['version']` - Version of aws_cli to install
+`node['aws_cli']['version']`  - Version of aws_cli to install
 
 # Recipes
 ## default
@@ -33,29 +33,29 @@ Attach EBS Volume
 
 ### Route53 CNAME
 ### Actions:
-- default action: `:update_cname`
-- `:update_cname` adds or updates a CNAME entry for the hostname value in the specified domain and hosted zone id
+- default action:  `:update_cname`
+- `:update_cname`  adds or updates a CNAME entry for the hostname value in the specified domain and hosted zone id
 
 
 #### required LWRP attributes:
 
-`record`            - Name of the CNAME record to create/update. (:name attribute)
+`record`          - Name of the CNAME record to create/update. (:name attribute)
 
-`hostname`          - CNAME Record Hostname Value.
+`hostname`        - CNAME Record Hostname Value.
 
-`domain`            - Route53 Hosted Zone Domain Name Value
+`domain`          - Route53 Hosted Zone Domain Name Value
 
-`hosted_zone_id`    - Route53 Hosted Zone ID
+`hosted_zone_id`  - Route53 Hosted Zone ID
 
-`region`            - AWS region
+`region`          - AWS region
 
 #### optional
 
-`change_type`       - UPSERT (Default) | CREATE | DELETE
+`change_type`  - UPSERT (Default) | CREATE | DELETE
 
-`ttl`               - 60 (Default)
+`ttl`          - 60 (Default)
 
-`record_type`       - CNAME (Default) Currently only supports cnames
+`record_type`  - CNAME (Default) Currently only supports cnames
 
 
 ### Example Add Route53 CNAME Record
@@ -74,20 +74,20 @@ end
 
 ### Attach EBS Volume
 ### Actions:
-- default action: `:attach_ebs`
-- `:attach_ebs` attach an existing ebs volume to an instance.
+- default action:  `:attach_ebs`
+- `:attach_ebs`    attach an existing ebs volume to an instance.
 
 #### required LWRP atributes:
 
-`volume_id`         - EBS volume ID (:name attribute)
+`volume_id`    - EBS volume ID (:name attribute)
 
-`instance_id`       - Instance id to attach volume to 
+`instance_id`  - Instance id to attach volume to 
 
-`region`            - AWS region
+`region`       - AWS region
 
 #### optional
 
-`device`            -  "/dev/xvdh" (Default)
+`device`  -  "/dev/xvdh" (Default)
 
 
 ### Example Attach EBS Volume
@@ -99,6 +99,46 @@ aws_cli_attach_ebs  "vol-123456" do
   instance_id       "i-1234567"
   region            "us-west-1"
   device            "/dev/xvdh"
+end
+
+```
+
+
+### ELB Instance Registration
+### Actions:
+- default action: `:register`
+- `:register`     register an instance to an ELB.
+- `:deregister`   deregister an instance to an ELB.
+
+#### required LWRP atributes:
+
+`instance_id`  - Instance ID (:name attribute)
+
+`elb_name`     - ELB name for instance to (de)register to
+
+`region`       - AWS region
+
+### Example register with ELB
+```ruby
+
+include_recipe 'aws_cli'
+
+aws_cli_elb_registration "i-123456" do
+  elb_name  "elb-preprod-us-west-1-abcdefg"
+  region    "us-west-1"
+end
+
+```
+
+### Example register with ELB
+```ruby
+
+include_recipe 'aws_cli'
+
+aws_cli_elb_registration "i-123456" do
+  action    :deregister
+  elb_name  "elb-preprod-us-west-1-abcdefg"
+  region    "us-west-1"
 end
 
 ```
